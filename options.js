@@ -32,18 +32,54 @@
 // }
 
 
+
+
 // 색추가 버튼 누르면, 색생성하기
 //이제 여기 option창에서 저장하고 백그라운드에서 가져오면된다.
-let appendColor = document.getElementById("appendColor")
-let colors = document.querySelector("#colors")
+// appendColor.addEventListener("click", async () => {
+//   var tmp = document.createElement("input");
 
-appendColor.addEventListener("click", async () => {
-  var tmp = document.createElement("input")
+//   //여기서 생기는 버튼의 css를 설정해줘야할까?
+//   tmp.type = "button";
+//   tmp.className = "changeColor"
 
-  //여기서 생기는 버튼의 css를 설정해줘야할까?
-  tmp.type = "button"
-  tmp.style.backgroundColor = "green"
+//   tmp.style.backgroundColor = Math.random()>0.5? "red":"blue";
 
-  colors.appendChild(tmp);
+//   colors.appendChild(tmp);
+
+//   changeColor = document.querySelectorAll(".changeColor");
+//   console.log(changeColor);
+// });
+
+
+// body에 onload 걸리면 하는걸로
+// chrome.storage 에서 데이터 읽어오기
+let data = {}
+chrome.storage.sync.get((result) => {
+  console.log(result);
+  data = result;
 });
+
+let colorsList = document.querySelectorAll("#colors > input");
+let inputId = document.querySelector("#inputId");
+let currentColor = colorsList[0].style.backgroundColor;
+let prevColor = 0;
+
+//선택되는 color 정하기
+for(let i = 0; i<colorsList.length; i++){
+  colorsList[i].addEventListener("click", async () =>{
+    currentColor = colorsList[i].style.backgroundColor
+    colorsList[prevColor].className="";
+    colorsList[i].className="current";
+    prevColor = i;
+  });
+}
+//선택된 color에 집어넣기
+idSubmit.addEventListener("click", async () => {
+  chrome.storage.sync.set({currentColor: inputId.value}, () => {
+    console.log('currentColor: ' + currentColor + ", inputId.value: " + inputId.value);
+  });
+  
+});
+
 

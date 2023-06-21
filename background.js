@@ -30,8 +30,3 @@ chrome.action.onClicked.addListener(async (tab) => {
   }
 });
 
-chrome.runtime.onInstalled.addListener(() => {
-	chrome.action.setBadgeText({
-		text: "OFF",
-	});
-});

@@ -1,16 +1,24 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html> -->
 <html lang=en>
 <meta charset=utf-8>
 <head>
-    <!-- <link rel="stylesheet" href="button.css"> -->
-		
+    <link rel="stylesheet" href="button.css">
 </head>
 <body>
     <div id="colors">
-        <button id="changeColor" value="이건뭐야"></button>
+        <!-- 여기첫번째가아니라, 시작할때 첫번쨰에 current를 줘도될까? -->
+        <input type="button" style="background-color: aqua;" class="current">
+        <input type="button" style="background-color: aquamarine;">
+        <input type="button" style="background-color: bisque;">
+        <input type="button" style="background-color: cornflowerblue;">
+        <input type="button" style="background-color: darkorange;">
+        <input type="button" style="background-color: greenyellow;">
+        <input type="button" style="background-color: hotpink;">
+        <input type="button" style="background-color: khaki;">
     </div>
-    <input type="button" id="appendColor" value="색추가abc"></div>
-		<script src="./options.js"></script>
-<!-- <script src="popup.js"></script> -->
+    
+    <input type="text" id="inputId" placeholder="아이디입력">
+    <input type="button" id="idSubmit" value="아이디제출">
+    <script src="./options.js"></script>
 </body>
 </html>
